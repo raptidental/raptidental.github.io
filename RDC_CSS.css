@@ -1,11 +1,185 @@
-.title {
-  font-size: 40px;
-  font-weight: 600;
-  font-family: poppins;
-}
-.navbar
-{
-  font-weight: bold;
-}
 
-/* Optional: Add any additional styles here */
+    * {
+      font-family: 'Poppins', sans-serif !important;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: white;
+      color: #2d3748;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    header {
+      background-color: #1e40af;
+      color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .flex 
+    {
+      display: flex;
+      align-items: center;
+    }
+
+  .title 
+  {
+    font-size: 40px;
+    font-weight: 600;
+    margin-left: 1rem; /* adds spacing between logo and text */
+  }
+
+
+    nav a {
+      margin-left: 1rem;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: #facc15;
+    }
+
+    section.hero {
+      background: linear-gradient(to right, #2563eb, #60a5fa);
+      color: white;
+      padding: 5rem 0;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: yellow;
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero a {
+      background-color: white;
+      color: #2563eb;
+      padding: 0.5rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .hero a:hover {
+      background-color: #facc15;
+      color: black;
+    }
+
+    section.services, section.team, section.contact {
+      padding: 4rem 0;
+    }
+
+    section.services {
+      background-color: #f7fafc;
+      text-align: center;
+    }
+
+    .services-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .service-box {
+      background: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      margin: 1rem;
+      max-width: 300px;
+    }
+
+    .service-box h4 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    section.team {
+      background-color: white;
+      text-align: center;
+    }
+
+    .team-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .team-member {
+      margin: 1rem;
+      max-width: 250px;
+      text-align: center;
+    }
+
+    .team-member img {
+      border-radius: 9999px;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    section.contact {
+      background: linear-gradient(to left, #2563eb, #60a5fa);
+      color: black;
+      text-align: center;
+    }
+
+    section.contact a {
+      color: white;
+      text-decoration: underline;
+    }
+
+    section.contact a.button {
+      background-color: white;
+      color: #1e40af;
+      padding: 0.5rem 1.5rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+
+    section.contact a.button:hover {
+      background-color: #facc15;
+      color: black;
+    }
+
+    footer {
+      background-color: #1a202c;
+      color: #a0aec0;
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.875rem;
+    }
+
+
+     
+ 
