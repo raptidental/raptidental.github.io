@@ -161,3 +161,10 @@ a
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
   
 }
+
+.doctor
+{
+  font-style:bold;
+  color:blue;
+  font-size: 6px;
+}
