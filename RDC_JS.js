@@ -65,25 +65,41 @@ document.addEventListener('DOMContentLoaded', function () {
   sections.forEach(s => observer.observe(s));
 
 
+  /* ── SERVICE CARD → PRE-SELECT FORM ── */
+  document.querySelectorAll('.service-card[data-service]').forEach(card => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', function () {
+      const serviceName = this.dataset.service;
+      const select = document.getElementById('service');
+      if (select) {
+        // match option text (handles &amp; entities)
+        Array.from(select.options).forEach(opt => {
+          if (opt.text === serviceName) select.value = opt.value;
+        });
+      }
+      const contact = document.querySelector('#contact');
+      if (contact) {
+        const top = contact.getBoundingClientRect().top + window.pageYOffset - HEADER_H;
+        slowScrollTo(top, SCROLL_DURATION);
+      }
+    });
+  });
+
+
   /* ── BOOKING FORM → WHATSAPP ── */
   const form = document.getElementById('bookingForm');
   if (form) {
-    const dateInput = document.getElementById('date');
-    if (dateInput) dateInput.min = new Date().toISOString().split('T')[0];
-
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       const name    = document.getElementById('fullName').value.trim();
       const phone   = document.getElementById('phone').value.trim();
       const service = document.getElementById('service').value;
-      const date    = document.getElementById('date').value;
       const notes   = document.getElementById('notes').value.trim();
 
       let msg = `Hello Rapti Dental Care! I'd like to book an appointment.\n\n`;
       msg += `*Name:* ${name}\n`;
       msg += `*Phone:* ${phone}\n`;
       msg += `*Service:* ${service}\n`;
-      msg += `*Preferred Date:* ${date}\n`;
       if (notes) msg += `*Notes:* ${notes}\n`;
 
       window.open(`https://wa.me/9779845692402?text=${encodeURIComponent(msg)}`, '_blank');
