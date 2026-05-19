@@ -1,87 +1,93 @@
-// RDC_JS.js
-
 document.addEventListener('DOMContentLoaded', function () {
-  const OFFSET = 80;
-  const SCROLL_DURATION = 1200;
 
+  const HEADER_H = document.querySelector('header').offsetHeight;
+  const SCROLL_DURATION = 1000;
+
+
+  /* ── SMOOTH SCROLL ── */
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', function (e) {
-      const targetId = this.getAttribute('href');
-
-      if (targetId === '#') {
+      const id = this.getAttribute('href');
+      if (id === '#') { e.preventDefault(); slowScrollTo(0, SCROLL_DURATION); return; }
+      const target = document.querySelector(id);
+      if (target) {
         e.preventDefault();
-        slowScrollTo(0, SCROLL_DURATION);
-        return;
-      }
-
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        e.preventDefault();
-        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - OFFSET;
-        slowScrollTo(targetPosition, SCROLL_DURATION);
+        const top = target.getBoundingClientRect().top + window.pageYOffset - HEADER_H;
+        slowScrollTo(top, SCROLL_DURATION);
       }
     });
   });
 
-  function slowScrollTo(targetPosition, duration) {
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition;
-    let startTime = null;
-
-    function animation(currentTime) {
-      if (!startTime) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const run = easeInOutCubic(timeElapsed, startPosition, distance, duration);
-      window.scrollTo(0, run);
-      if (timeElapsed < duration) requestAnimationFrame(animation);
+  function slowScrollTo(target, duration) {
+    const start = window.pageYOffset;
+    const dist  = target - start;
+    let t0 = null;
+    function step(now) {
+      if (!t0) t0 = now;
+      const elapsed = now - t0;
+      window.scrollTo(0, easeInOutCubic(elapsed, start, dist, duration));
+      if (elapsed < duration) requestAnimationFrame(step);
     }
-
-    function easeInOutCubic(t, b, c, d) {
-      t /= d / 2;
-      if (t < 1) return c / 2 * t * t * t + b;
-      t -= 2;
-      return c / 2 * (t * t * t + 2) + b;
-    }
-
-    requestAnimationFrame(animation);
+    requestAnimationFrame(step);
   }
 
-  console.log("Rapti Dental Care smooth scroll script active.");
+  function easeInOutCubic(t, b, c, d) {
+    t /= d / 2;
+    if (t < 1) return c / 2 * t * t * t + b;
+    t -= 2;
+    return c / 2 * (t * t * t + 2) + b;
+  }
 
-  const bookingForm = document.getElementById('bookingForm');
-  if (bookingForm) {
+
+  /* ── ACTIVE NAV (underline animates left → right) ── */
+  const sections  = document.querySelectorAll('section[id]');
+  const navLinks  = document.querySelectorAll('nav a.nav-link');
+
+  function setActive(id) {
+    navLinks.forEach(link => {
+      const matches = link.getAttribute('href') === '#' + id;
+      if (matches && !link.classList.contains('active')) {
+        link.classList.remove('active');
+        void link.offsetWidth; // force reflow → restart animation
+        link.classList.add('active');
+      } else if (!matches) {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) setActive(entry.target.id);
+    });
+  }, { rootMargin: `-${HEADER_H}px 0px -55% 0px`, threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+
+
+  /* ── BOOKING FORM → WHATSAPP ── */
+  const form = document.getElementById('bookingForm');
+  if (form) {
     const dateInput = document.getElementById('date');
-    if (dateInput) {
-      const today = new Date().toISOString().split('T')[0];
-      dateInput.setAttribute('min', today);
-    }
+    if (dateInput) dateInput.min = new Date().toISOString().split('T')[0];
 
-    bookingForm.addEventListener('submit', function (e) {
+    form.addEventListener('submit', function (e) {
       e.preventDefault();
       const name    = document.getElementById('fullName').value.trim();
       const phone   = document.getElementById('phone').value.trim();
-      const email   = document.getElementById('email').value.trim();
       const service = document.getElementById('service').value;
       const date    = document.getElementById('date').value;
-      const time    = document.getElementById('time').value;
       const notes   = document.getElementById('notes').value.trim();
 
       let msg = `Hello Rapti Dental Care! I'd like to book an appointment.\n\n`;
       msg += `*Name:* ${name}\n`;
       msg += `*Phone:* ${phone}\n`;
-      if (email) msg += `*Email:* ${email}\n`;
       msg += `*Service:* ${service}\n`;
       msg += `*Preferred Date:* ${date}\n`;
-      msg += `*Preferred Time:* ${time}\n`;
       if (notes) msg += `*Notes:* ${notes}\n`;
 
-      const waUrl = `https://wa.me/9779845692402?text=${encodeURIComponent(msg)}`;
-      window.open(waUrl, '_blank');
+      window.open(`https://wa.me/9779845692402?text=${encodeURIComponent(msg)}`, '_blank');
     });
   }
 
-}
-
-);
-
-
+});
