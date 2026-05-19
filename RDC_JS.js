@@ -48,6 +48,38 @@ document.addEventListener('DOMContentLoaded', function () {
 
   console.log("Rapti Dental Care smooth scroll script active.");
 
+  const bookingForm = document.getElementById('bookingForm');
+  if (bookingForm) {
+    const dateInput = document.getElementById('date');
+    if (dateInput) {
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.setAttribute('min', today);
+    }
+
+    bookingForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name    = document.getElementById('fullName').value.trim();
+      const phone   = document.getElementById('phone').value.trim();
+      const email   = document.getElementById('email').value.trim();
+      const service = document.getElementById('service').value;
+      const date    = document.getElementById('date').value;
+      const time    = document.getElementById('time').value;
+      const notes   = document.getElementById('notes').value.trim();
+
+      let msg = `Hello Rapti Dental Care! I'd like to book an appointment.\n\n`;
+      msg += `*Name:* ${name}\n`;
+      msg += `*Phone:* ${phone}\n`;
+      if (email) msg += `*Email:* ${email}\n`;
+      msg += `*Service:* ${service}\n`;
+      msg += `*Preferred Date:* ${date}\n`;
+      msg += `*Preferred Time:* ${time}\n`;
+      if (notes) msg += `*Notes:* ${notes}\n`;
+
+      const waUrl = `https://wa.me/9779845692402?text=${encodeURIComponent(msg)}`;
+      window.open(waUrl, '_blank');
+    });
+  }
+
 }
 
 );
