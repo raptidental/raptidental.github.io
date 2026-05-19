@@ -12,6 +12,15 @@ body {
 
 a { text-decoration: none; }
 
+/* ── INLINE SVG ICONS ── */
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
 .container {
   max-width: 1200px;
   margin: auto;
@@ -166,8 +175,9 @@ section.hero {
   gap: 0.6rem;
 }
 
-.sec-title i {
-  font-size: 1.5rem;
+.sec-title .icon {
+  width: 1.5rem;
+  height: 1.5rem;
   color: #2563eb;
 }
 
@@ -175,7 +185,7 @@ section.hero {
   color: white !important;
 }
 
-.contact-title i {
+.contact-title .icon {
   color: #facc15 !important;
 }
 
@@ -364,9 +374,9 @@ section.contact {
   text-decoration: underline;
 }
 
-.contact-details > p > i {
-  width: 18px;
-  font-size: 1rem;
+.contact-details > p > .icon {
+  width: 1.05rem;
+  height: 1.05rem;
   color: #facc15;
   flex-shrink: 0;
 }
@@ -470,10 +480,11 @@ section.contact {
   gap: 0.35rem;
 }
 
-.form-group label i,
-.form-group--full label i {
+.form-group label .icon,
+.form-group--full label .icon {
   color: #2563eb;
-  font-size: 0.72rem;
+  width: 0.85rem;
+  height: 0.85rem;
 }
 
 .form-group input,
