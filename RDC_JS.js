@@ -65,14 +65,13 @@ document.addEventListener('DOMContentLoaded', function () {
   sections.forEach(s => observer.observe(s));
 
 
-  /* ── SERVICE CARD → PRE-SELECT FORM ── */
+  /* ── SERVICE CARD → PRE-SELECT FORM + FLASH ── */
   document.querySelectorAll('.service-card[data-service]').forEach(card => {
     card.style.cursor = 'pointer';
     card.addEventListener('click', function () {
       const serviceName = this.dataset.service;
       const select = document.getElementById('service');
       if (select) {
-        // match option text (handles &amp; entities)
         Array.from(select.options).forEach(opt => {
           if (opt.text === serviceName) select.value = opt.value;
         });
@@ -81,6 +80,17 @@ document.addEventListener('DOMContentLoaded', function () {
       if (contact) {
         const top = contact.getBoundingClientRect().top + window.pageYOffset - HEADER_H;
         slowScrollTo(top, SCROLL_DURATION);
+        // flash the select after scroll finishes
+        setTimeout(() => {
+          if (select) {
+            select.classList.remove('service-flash');
+            void select.offsetWidth;
+            select.classList.add('service-flash');
+            select.addEventListener('animationend', () => {
+              select.classList.remove('service-flash');
+            }, { once: true });
+          }
+        }, SCROLL_DURATION + 100);
       }
     });
   });
