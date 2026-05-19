@@ -40,15 +40,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* ── ACTIVE NAV (underline animates left → right) ── */
-  const sections  = document.querySelectorAll('section[id]');
-  const navLinks  = document.querySelectorAll('nav a.nav-link');
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a.nav-link');
 
   function setActive(id) {
     navLinks.forEach(link => {
       const matches = link.getAttribute('href') === '#' + id;
       if (matches && !link.classList.contains('active')) {
         link.classList.remove('active');
-        void link.offsetWidth; // force reflow → restart animation
+        void link.offsetWidth;
         link.classList.add('active');
       } else if (!matches) {
         link.classList.remove('active');
@@ -65,9 +65,48 @@ document.addEventListener('DOMContentLoaded', function () {
   sections.forEach(s => observer.observe(s));
 
 
+  /* ── SERVICE CAROUSEL (one card per 2.5 s) ── */
+  const track = document.getElementById('serviceTrack');
+  if (track) {
+    const allCards = track.querySelectorAll('.service-card');
+    const ORIG_COUNT = 12;
+    let idx = 0;
+    let stepping = false;
+
+    function getStepPx() {
+      const card = allCards[0];
+      const gap  = parseFloat(getComputedStyle(track).gap) || 24;
+      return card.offsetWidth + gap;
+    }
+
+    function stepCarousel() {
+      if (stepping) return;
+      stepping = true;
+      idx++;
+
+      track.style.transition = 'transform 0.55s cubic-bezier(0.4, 0, 0.2, 1)';
+      track.style.transform  = `translateX(-${idx * getStepPx()}px)`;
+
+      // When we've scrolled through all originals, silently jump back to start
+      if (idx >= ORIG_COUNT) {
+        setTimeout(() => {
+          track.style.transition = 'none';
+          track.style.transform  = 'translateX(0)';
+          idx = 0;
+          void track.offsetWidth; // force reflow before re-enabling transition
+          stepping = false;
+        }, 600);
+      } else {
+        setTimeout(() => { stepping = false; }, 600);
+      }
+    }
+
+    setInterval(stepCarousel, 2500);
+  }
+
+
   /* ── SERVICE CARD → PRE-SELECT FORM + FLASH ── */
   document.querySelectorAll('.service-card[data-service]').forEach(card => {
-    card.style.cursor = 'pointer';
     card.addEventListener('click', function () {
       const serviceName = this.dataset.service;
       const select = document.getElementById('service');
@@ -80,7 +119,6 @@ document.addEventListener('DOMContentLoaded', function () {
       if (contact) {
         const top = contact.getBoundingClientRect().top + window.pageYOffset - HEADER_H;
         slowScrollTo(top, SCROLL_DURATION);
-        // flash the select after scroll finishes
         setTimeout(() => {
           if (select) {
             select.classList.remove('service-flash');

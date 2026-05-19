@@ -97,20 +97,40 @@ nav a.nav-link.active::after {
 section.hero {
   background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
   color: white;
-  padding: 5.5rem 0;
-  text-align: center;
+  padding: 5rem 0;
 }
 
-.hero h2 {
-  font-size: 2.75rem;
+.hero-inner {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.hero-logo-box {
+  background: white;
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+  flex-shrink: 0;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+}
+
+.hero-logo-box img {
+  height: 110px;
+  width: auto;
+  display: block;
+}
+
+.hero-text h2 {
+  font-size: 2.5rem;
   font-weight: 700;
   color: #facc15;
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
+  line-height: 1.2;
 }
 
-.hero p {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
+.hero-text p {
+  font-size: 1.05rem;
+  margin-bottom: 1.75rem;
   opacity: 0.9;
 }
 
@@ -122,72 +142,85 @@ section.hero {
   font-weight: 700;
   font-size: 1rem;
   display: inline-block;
-  transition: all 0.25s;
+  transition: background 0.25s, color 0.25s, transform 0.2s;
   box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
 .hero-btn:hover {
-  transform: scale(1.06);
+  background: #facc15;
+  color: #1a202c;
+  transform: scale(1.04);
 }
 
 
-/* ── SERVICES ── */
-section.services {
-  padding: 4rem 0 3rem;
-  background: #f8faff;
-  overflow: hidden;
-}
-
+/* ── SECTION TITLES ── */
 .sec-title {
   font-size: 1.7rem;
   font-weight: 700;
   color: #1e40af;
   margin-bottom: 2rem;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
 }
 
-.ticker-wrap {
+.sec-title i {
+  font-size: 1.5rem;
+  color: #2563eb;
+}
+
+.contact-title {
+  color: white !important;
+}
+
+.contact-title i {
+  color: #facc15 !important;
+}
+
+
+/* ── SERVICES CAROUSEL ── */
+section.services {
+  padding: 4rem 0 3rem;
+  background: #f8faff;
+  overflow: hidden;
+}
+
+.carousel-viewport {
   overflow: hidden;
   width: 100%;
-  padding: 0.5rem 0 1.5rem;
+  padding: 0.5rem 0 1.75rem;
 }
 
-.ticker-track {
+.carousel-track {
   display: flex;
-  gap: 1.25rem;
+  gap: 1.5rem;
   width: max-content;
-  animation: ticker 40s linear infinite;
-}
-
-.ticker-track:hover {
-  animation-play-state: paused;
-}
-
-@keyframes ticker {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .service-card {
   background: white;
-  border-radius: 1rem;
-  padding: 1.5rem 1.25rem;
-  width: 210px;
+  border-radius: 1.1rem;
+  padding: 2rem 1.75rem;
+  width: 270px;
   flex-shrink: 0;
-  box-shadow: 0 2px 12px rgba(30, 64, 175, 0.07);
+  box-shadow: 0 2px 14px rgba(30, 64, 175, 0.08);
   border: 1px solid #e5e7eb;
   text-align: center;
+  cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .service-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(30, 64, 175, 0.14);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 28px rgba(30, 64, 175, 0.15);
 }
 
 .svc-icon {
-  font-size: 1.75rem;
-  margin-bottom: 0.65rem;
+  font-size: 2rem;
+  margin-bottom: 0.85rem;
   color: #1e40af;
 }
 
@@ -196,16 +229,16 @@ section.services {
 }
 
 .service-card h4 {
-  font-size: 0.92rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #1e40af;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .service-card p {
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   color: #6b7280;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 
@@ -291,17 +324,13 @@ section.contact {
   background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
 }
 
-.contact-title {
-  color: white !important;
-}
-
 .booking-layout {
   display: flex;
   gap: 1.75rem;
   align-items: stretch;
 }
 
-/* LEFT — map + info */
+/* LEFT — details on top, map below */
 .contact-info-panel {
   flex: 1;
   display: flex;
@@ -314,16 +343,16 @@ section.contact {
 
 .contact-details {
   background: rgba(15, 23, 60, 0.92);
-  padding: 1.6rem 1.75rem;
+  padding: 1.75rem;
   color: white;
 }
 
 .contact-details p {
-  margin-bottom: 0.9rem;
-  font-size: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.85rem;
 }
 
 .contact-details p:last-of-type {
@@ -335,40 +364,28 @@ section.contact {
   text-decoration: underline;
 }
 
-.contact-details i {
+.contact-details > p > i {
   width: 18px;
   font-size: 1rem;
   color: #facc15;
   flex-shrink: 0;
 }
 
-.map-wrap {
-  flex: 1;
-  min-height: 220px;
-}
-
-.map-wrap iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  display: block;
-}
-
 .social-row {
   display: flex;
   gap: 0.65rem;
-  margin-top: 1rem;
+  margin-top: 1.25rem;
 }
 
 .social-btn {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 9999px;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   transition: transform 0.2s, filter 0.2s;
   flex-shrink: 0;
 }
@@ -382,6 +399,18 @@ section.contact {
 .social-btn--ig  { background: linear-gradient(45deg, #f09433, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888); }
 .social-btn--wa  { background: #25D366; }
 .social-btn--map { background: #EA4335; }
+
+.map-wrap {
+  flex: 1;
+  min-height: 200px;
+}
+
+.map-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
 
 /* RIGHT — form */
 .booking-form {
@@ -400,6 +429,9 @@ section.contact {
   font-weight: 700;
   color: #1e40af;
   margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .form-row {
@@ -415,7 +447,6 @@ section.contact {
 }
 
 .form-group--full {
-  flex: 1;
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
@@ -434,6 +465,15 @@ section.contact {
   margin-bottom: 0.3rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.form-group label i,
+.form-group--full label i {
+  color: #2563eb;
+  font-size: 0.72rem;
 }
 
 .form-group input,
@@ -460,7 +500,7 @@ section.contact {
 
 .submit-btn {
   width: 100%;
-  background: #25D366;
+  background: #166534;
   color: white;
   border: none;
   padding: 0.8rem 1rem;
@@ -477,7 +517,7 @@ section.contact {
 }
 
 .submit-btn:hover {
-  background: #128C7E;
+  background: #14532d;
   transform: translateY(-1px);
 }
 
@@ -502,46 +542,38 @@ footer {
 }
 
 .footer-copy {
-  color: #64748b;
+  color: white;
   font-size: 0.83rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.footer-copy .fa-tooth {
-  color: #1e40af;
-}
-
-.footer-credit {
-  color: #facc15;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  font-weight: 400;
 }
 
 .back-to-top {
-  width: 38px;
-  height: 38px;
-  border-radius: 9999px;
-  background: #1e40af;
-  color: white;
+  color: #94a3b8;
+  font-size: 0.82rem;
+  font-weight: 600;
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-  transition: background 0.2s, transform 0.2s;
-  flex-shrink: 0;
+  gap: 0.35rem;
+  transition: color 0.2s;
+  letter-spacing: 0.02em;
+}
+
+.back-to-top svg {
+  transition: transform 0.2s;
 }
 
 .back-to-top:hover {
-  background: #facc15;
-  color: #0f172a;
-  transform: translateY(-3px);
+  color: #facc15;
+}
+
+.back-to-top:hover svg {
+  transform: translateY(-2px);
 }
 
 @media (max-width: 600px) {
   .footer-inner { flex-direction: column; gap: 0.75rem; text-align: center; }
 }
+
 
 /* ── SERVICE SELECT FLASH ── */
 @keyframes flash-select {
@@ -557,8 +589,9 @@ footer {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
+  .hero-inner { flex-direction: column; text-align: center; }
+  .hero-text h2 { font-size: 1.8rem; }
   .title { font-size: 1rem; }
-  .hero h2 { font-size: 1.8rem; }
   .booking-layout { flex-direction: column; }
   .form-row { flex-direction: column; }
   .team-grid { flex-direction: column; align-items: center; }
@@ -568,4 +601,5 @@ footer {
 @media (max-width: 480px) {
   nav a.nav-link { padding: 0.4rem 0.5rem; font-size: 0.82rem; }
   .title { font-size: 0.85rem; }
+  .hero-logo-box img { height: 80px; }
 }

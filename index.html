@@ -7,7 +7,7 @@
   <title>Rapti Dental Care</title>
   <link rel="stylesheet" href="RDC_CSS.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
 
@@ -29,44 +29,51 @@
 
   <section id="home" class="hero">
     <div class="container">
-      <h2>Your Smile, Our Priority</h2>
-      <p>Professional, compassionate dental care in the heart of Deukhuri</p>
-      <a href="#contact" class="hero-btn">Book Appointment</a>
+      <div class="hero-inner">
+        <div class="hero-logo-box">
+          <img src="asset/logo.webp" alt="Rapti Dental Logo" />
+        </div>
+        <div class="hero-text">
+          <h2>Your Smile, Our Priority</h2>
+          <p>Professional, compassionate dental care in the heart of Deukhuri</p>
+          <a href="#contact" class="hero-btn">Book Appointment</a>
+        </div>
+      </div>
     </div>
   </section>
 
 
   <section id="services" class="services">
     <div class="container">
-      <h2 class="sec-title">Our Services</h2>
+      <h2 class="sec-title"><i class="fas fa-tooth"></i> Our Services</h2>
     </div>
-    <div class="ticker-wrap">
-      <div class="ticker-track">
+    <div class="carousel-viewport">
+      <div class="carousel-track" id="serviceTrack">
         <div class="service-card" data-service="General Checkup"><div class="svc-icon"><i class="fas fa-stethoscope"></i></div><h4>General Checkup</h4><p>Routine exams and cleanings for a healthy smile.</p></div>
         <div class="service-card" data-service="Teeth Whitening"><div class="svc-icon"><i class="fas fa-sun"></i></div><h4>Teeth Whitening</h4><p>Professional whitening for a brighter, confident smile.</p></div>
         <div class="service-card" data-service="Dental Implants"><div class="svc-icon"><i class="fas fa-tooth"></i></div><h4>Dental Implants</h4><p>Permanent tooth replacement that looks and feels natural.</p></div>
         <div class="service-card" data-service="Root Canal"><div class="svc-icon"><i class="fas fa-syringe"></i></div><h4>Root Canal</h4><p>Pain-free treatment to save infected or damaged teeth.</p></div>
         <div class="service-card" data-service="Braces &amp; Aligners"><div class="svc-icon"><i class="fas fa-teeth"></i></div><h4>Braces &amp; Aligners</h4><p>Orthodontic solutions for a perfectly aligned smile.</p></div>
-        <div class="service-card" data-service="Veneers"><div class="svc-icon"><i class="far fa-gem"></i></div><h4>Veneers</h4><p>Thin porcelain shells for a flawless, natural look.</p></div>
-        <div class="service-card" data-service="Gum Treatment"><div class="svc-icon"><i class="fas fa-heart-pulse"></i></div><h4>Gum Treatment</h4><p>Periodontal therapy to treat and prevent gum disease.</p></div>
+        <div class="service-card" data-service="Veneers"><div class="svc-icon"><i class="fas fa-gem"></i></div><h4>Veneers</h4><p>Thin porcelain shells for a flawless, natural look.</p></div>
+        <div class="service-card" data-service="Gum Treatment"><div class="svc-icon"><i class="fas fa-heartbeat"></i></div><h4>Gum Treatment</h4><p>Periodontal therapy to treat and prevent gum disease.</p></div>
         <div class="service-card" data-service="Crowns &amp; Bridges"><div class="svc-icon"><i class="fas fa-crown"></i></div><h4>Crowns &amp; Bridges</h4><p>Restore damaged teeth with durable, natural-looking crowns.</p></div>
-        <div class="service-card" data-service="Pediatric Dentistry"><div class="svc-icon"><i class="fas fa-child-reaching"></i></div><h4>Pediatric Dentistry</h4><p>Gentle, fun dental care for children of all ages.</p></div>
-        <div class="service-card" data-service="Oral Surgery"><div class="svc-icon"><i class="fas fa-kit-medical"></i></div><h4>Oral Surgery</h4><p>Expert surgical procedures including wisdom tooth removal.</p></div>
+        <div class="service-card" data-service="Pediatric Dentistry"><div class="svc-icon"><i class="fas fa-child"></i></div><h4>Pediatric Dentistry</h4><p>Gentle, fun dental care for children of all ages.</p></div>
+        <div class="service-card" data-service="Oral Surgery"><div class="svc-icon"><i class="fas fa-briefcase-medical"></i></div><h4>Oral Surgery</h4><p>Expert surgical procedures including wisdom tooth removal.</p></div>
         <div class="service-card" data-service="Dentures"><div class="svc-icon"><i class="fas fa-teeth-open"></i></div><h4>Dentures</h4><p>Custom-fit dentures to restore your natural smile.</p></div>
-        <div class="service-card" data-service="Emergency Care"><div class="svc-icon"><i class="fas fa-triangle-exclamation"></i></div><h4>Emergency Care</h4><p>Prompt dental care when you need it most.</p></div>
-        <!-- duplicate set for seamless infinite scroll -->
+        <div class="service-card" data-service="Emergency Care"><div class="svc-icon"><i class="fas fa-exclamation-triangle"></i></div><h4>Emergency Care</h4><p>Prompt dental care when you need it most.</p></div>
+        <!-- duplicates for seamless loop -->
         <div class="service-card" data-service="General Checkup"><div class="svc-icon"><i class="fas fa-stethoscope"></i></div><h4>General Checkup</h4><p>Routine exams and cleanings for a healthy smile.</p></div>
         <div class="service-card" data-service="Teeth Whitening"><div class="svc-icon"><i class="fas fa-sun"></i></div><h4>Teeth Whitening</h4><p>Professional whitening for a brighter, confident smile.</p></div>
         <div class="service-card" data-service="Dental Implants"><div class="svc-icon"><i class="fas fa-tooth"></i></div><h4>Dental Implants</h4><p>Permanent tooth replacement that looks and feels natural.</p></div>
         <div class="service-card" data-service="Root Canal"><div class="svc-icon"><i class="fas fa-syringe"></i></div><h4>Root Canal</h4><p>Pain-free treatment to save infected or damaged teeth.</p></div>
         <div class="service-card" data-service="Braces &amp; Aligners"><div class="svc-icon"><i class="fas fa-teeth"></i></div><h4>Braces &amp; Aligners</h4><p>Orthodontic solutions for a perfectly aligned smile.</p></div>
-        <div class="service-card" data-service="Veneers"><div class="svc-icon"><i class="far fa-gem"></i></div><h4>Veneers</h4><p>Thin porcelain shells for a flawless, natural look.</p></div>
-        <div class="service-card" data-service="Gum Treatment"><div class="svc-icon"><i class="fas fa-heart-pulse"></i></div><h4>Gum Treatment</h4><p>Periodontal therapy to treat and prevent gum disease.</p></div>
+        <div class="service-card" data-service="Veneers"><div class="svc-icon"><i class="fas fa-gem"></i></div><h4>Veneers</h4><p>Thin porcelain shells for a flawless, natural look.</p></div>
+        <div class="service-card" data-service="Gum Treatment"><div class="svc-icon"><i class="fas fa-heartbeat"></i></div><h4>Gum Treatment</h4><p>Periodontal therapy to treat and prevent gum disease.</p></div>
         <div class="service-card" data-service="Crowns &amp; Bridges"><div class="svc-icon"><i class="fas fa-crown"></i></div><h4>Crowns &amp; Bridges</h4><p>Restore damaged teeth with durable, natural-looking crowns.</p></div>
-        <div class="service-card" data-service="Pediatric Dentistry"><div class="svc-icon"><i class="fas fa-child-reaching"></i></div><h4>Pediatric Dentistry</h4><p>Gentle, fun dental care for children of all ages.</p></div>
-        <div class="service-card" data-service="Oral Surgery"><div class="svc-icon"><i class="fas fa-kit-medical"></i></div><h4>Oral Surgery</h4><p>Expert surgical procedures including wisdom tooth removal.</p></div>
+        <div class="service-card" data-service="Pediatric Dentistry"><div class="svc-icon"><i class="fas fa-child"></i></div><h4>Pediatric Dentistry</h4><p>Gentle, fun dental care for children of all ages.</p></div>
+        <div class="service-card" data-service="Oral Surgery"><div class="svc-icon"><i class="fas fa-briefcase-medical"></i></div><h4>Oral Surgery</h4><p>Expert surgical procedures including wisdom tooth removal.</p></div>
         <div class="service-card" data-service="Dentures"><div class="svc-icon"><i class="fas fa-teeth-open"></i></div><h4>Dentures</h4><p>Custom-fit dentures to restore your natural smile.</p></div>
-        <div class="service-card" data-service="Emergency Care"><div class="svc-icon"><i class="fas fa-triangle-exclamation"></i></div><h4>Emergency Care</h4><p>Prompt dental care when you need it most.</p></div>
+        <div class="service-card" data-service="Emergency Care"><div class="svc-icon"><i class="fas fa-exclamation-triangle"></i></div><h4>Emergency Care</h4><p>Prompt dental care when you need it most.</p></div>
       </div>
     </div>
   </section>
@@ -74,7 +81,7 @@
 
   <section id="team" class="team">
     <div class="container">
-      <h2 class="sec-title">Meet Our Doctors</h2>
+      <h2 class="sec-title"><i class="fas fa-user-md"></i> Meet Our Doctors</h2>
       <div class="team-grid">
         <div class="team-card">
           <div class="doctor-avatar">NK</div>
@@ -101,19 +108,19 @@
 
   <section id="contact" class="contact">
     <div class="container">
-      <h2 class="sec-title contact-title">Book Your Appointment</h2>
+      <h2 class="sec-title contact-title"><i class="fas fa-calendar-check"></i> Book Your Appointment</h2>
       <div class="booking-layout">
 
         <div class="contact-info-panel">
           <div class="contact-details">
             <p><i class="fas fa-phone"></i> <a href="tel:+9779800000000">+977-9800000000</a></p>
-            <p><i class="fas fa-location-dot"></i> Lamahi 5, Dang, Nepal</p>
+            <p><i class="fas fa-map-marker-alt"></i> Lamahi 5, Dang, Nepal</p>
             <p><i class="fas fa-clock"></i> Sun–Fri &nbsp;9AM–5PM</p>
             <div class="social-row">
               <a href="#" class="social-btn social-btn--fb" title="Facebook"><i class="fab fa-facebook-f"></i></a>
               <a href="#" class="social-btn social-btn--ig" title="Instagram"><i class="fab fa-instagram"></i></a>
               <a href="https://wa.me/9779845692402" target="_blank" class="social-btn social-btn--wa" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-              <a href="https://www.google.com/maps/place/27%C2%B052'26.8%22N+82%C2%B031'18.3%22E/@27.874107,82.5211133,19z" target="_blank" class="social-btn social-btn--map" title="View on Map"><i class="fas fa-location-dot"></i></a>
+              <a href="https://www.google.com/maps/place/27%C2%B052'26.8%22N+82%C2%B031'18.3%22E/@27.874107,82.5211133,19z" target="_blank" class="social-btn social-btn--map" title="View on Map"><i class="fas fa-map-marker-alt"></i></a>
             </div>
           </div>
           <div class="map-wrap">
@@ -127,19 +134,19 @@
         </div>
 
         <form class="booking-form" id="bookingForm">
-          <h3 class="form-heading">Request an Appointment</h3>
+          <h3 class="form-heading"><i class="fas fa-pen-alt"></i> Request an Appointment</h3>
           <div class="form-row">
             <div class="form-group">
-              <label for="fullName">Full Name *</label>
+              <label for="fullName"><i class="fas fa-user"></i> Full Name *</label>
               <input type="text" id="fullName" placeholder="Your full name" required />
             </div>
             <div class="form-group">
-              <label for="phone">Phone *</label>
+              <label for="phone"><i class="fas fa-phone"></i> Phone *</label>
               <input type="tel" id="phone" placeholder="+977-XXXXXXXXXX" required />
             </div>
           </div>
           <div class="form-group form-group--full">
-            <label for="service">Service *</label>
+            <label for="service"><i class="fas fa-tooth"></i> Service *</label>
             <select id="service" required>
               <option value="" disabled selected>Select a service</option>
               <option>General Checkup</option>
@@ -157,7 +164,7 @@
             </select>
           </div>
           <div class="form-group form-group--full">
-            <label for="notes">Notes (optional)</label>
+            <label for="notes"><i class="fas fa-comment-alt"></i> Notes (optional)</label>
             <textarea id="notes" placeholder="Any specific concerns or requests..."></textarea>
           </div>
           <button type="submit" class="submit-btn">
@@ -174,10 +181,13 @@
   <footer>
     <div class="container footer-inner">
       <p class="footer-copy">
-        <i class="fas fa-tooth"></i> &copy; Rapti Dental Care Pvt. Ltd. &nbsp;|&nbsp; Built by <span class="footer-credit">Er. Abhishek Neupane</span>
+        &copy; Rapti Dental Care Pvt. Ltd. &nbsp;&middot;&nbsp; Built by Er. Abhishek Neupane
       </p>
       <a href="#home" class="back-to-top" title="Back to top">
-        <i class="fas fa-chevron-up"></i>
+        Back to top
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
       </a>
     </div>
   </footer>
