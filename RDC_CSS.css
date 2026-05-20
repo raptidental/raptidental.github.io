@@ -60,9 +60,17 @@ header {
 }
 
 .title-row {
-  display: flex;
-  justify-content: space-between;
-  width: 8.5rem;
+  text-align: center;
+}
+
+.title-row--1 {
+  letter-spacing: 0.22em;  /* widen "Rapti Dental" via letter-spacing */
+  padding-left: 0.22em;    /* counter trailing letter-spacing for centering */
+}
+
+.title-row--2 {
+  letter-spacing: 0.05em;  /* "Care Pvt. Ltd." is naturally wider */
+  padding-left: 0.05em;
 }
 
 nav {
