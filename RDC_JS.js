@@ -65,13 +65,17 @@ document.addEventListener('DOMContentLoaded', function () {
   sections.forEach(s => observer.observe(s));
 
 
-  /* ── SERVICE CAROUSEL (one card per 2.5 s) ── */
+  /* ── SERVICE CAROUSEL (one card per 2.5 s, pause on hover) ── */
   const track = document.getElementById('serviceTrack');
   if (track) {
     const allCards = track.querySelectorAll('.service-card');
     const ORIG_COUNT = 12;
     let idx = 0;
     let stepping = false;
+    let paused = false;
+
+    track.addEventListener('mouseenter', () => { paused = true; });
+    track.addEventListener('mouseleave', () => { paused = false; });
 
     function getStepPx() {
       const card = allCards[0];
@@ -80,20 +84,19 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function stepCarousel() {
-      if (stepping) return;
+      if (stepping || paused) return;
       stepping = true;
       idx++;
 
       track.style.transition = 'transform 0.55s cubic-bezier(0.4, 0, 0.2, 1)';
       track.style.transform  = `translateX(-${idx * getStepPx()}px)`;
 
-      // When we've scrolled through all originals, silently jump back to start
       if (idx >= ORIG_COUNT) {
         setTimeout(() => {
           track.style.transition = 'none';
           track.style.transform  = 'translateX(0)';
           idx = 0;
-          void track.offsetWidth; // force reflow before re-enabling transition
+          void track.offsetWidth;
           stepping = false;
         }, 600);
       } else {
