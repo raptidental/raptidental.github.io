@@ -122,6 +122,7 @@ section.hero {
   justify-content: center;
   gap: 2.5rem;
   text-align: center;
+  padding-right: 3rem; /* nudges visual center slightly left */
 }
 
 .hero-text {
@@ -621,18 +622,56 @@ footer {
 
 
 /* ── RESPONSIVE ── */
+
+/* Tablet / smaller laptop */
+@media (max-width: 900px) {
+  .flex { gap: 0.7rem; }
+  .title { font-size: 0.9rem; }
+  .title-row { width: 7rem; }
+  nav a.nav-link { padding: 0.4rem 0.65rem; font-size: 0.85rem; }
+  .hero-inner { padding-right: 0; gap: 1.5rem; }
+  .hero-logo-box img { height: 95px; }
+  .hero-text h2 { font-size: 2rem; }
+}
+
+/* Tablet portrait */
 @media (max-width: 768px) {
-  .hero-inner { flex-direction: column; text-align: center; }
+  .hero-inner { flex-direction: column; gap: 1.75rem; }
   .hero-text h2 { font-size: 1.8rem; }
-  .title { font-size: 1rem; }
+  .hero-logo-box { padding: 1rem; }
+  .hero-logo-box img { height: 100px; }
   .booking-layout { flex-direction: column; }
   .form-row { flex-direction: column; }
   .team-grid { flex-direction: column; align-items: center; }
   .contact-info-panel { min-height: 340px; }
+  .sec-title { font-size: 1.45rem; }
 }
 
-@media (max-width: 480px) {
-  nav a.nav-link { padding: 0.4rem 0.5rem; font-size: 0.82rem; }
+/* Stacked header — small phones */
+@media (max-width: 560px) {
+  header img[alt="Logo"] { height: 55px !important; }
+  .nav-container { flex-direction: column; gap: 0.6rem; padding: 0.6rem 0; }
+  .flex { width: auto; justify-content: center; }
+  nav { width: 100%; justify-content: center; flex-wrap: wrap; gap: 0.15rem; }
   .title { font-size: 0.85rem; }
-  .hero-logo-box img { height: 80px; }
+  .title-row { width: 6.5rem; }
+  .hero-text h2 { font-size: 1.55rem; }
+  .hero-logo-box img { height: 85px; }
+  section.hero { padding: 3.5rem 0; }
+  section.services, section.team, section.contact { padding: 3rem 0; }
+  .service-card { width: 230px; }
+  .booking-form, .contact-details { padding: 1.25rem; }
+}
+
+/* Very small phones */
+@media (max-width: 400px) {
+  .title { font-size: 0.78rem; }
+  .title-row { width: 5.8rem; }
+  nav a.nav-link { padding: 0.35rem 0.5rem; font-size: 0.8rem; }
+  .hero-text h2 { font-size: 1.4rem; }
+  .hero-text p { font-size: 0.92rem; }
+  .sec-title { font-size: 1.25rem; }
+  .sec-title .icon { width: 1.2rem; height: 1.2rem; }
+  .service-card { width: 210px; }
+  .footer-copy { font-size: 0.75rem; }
 }
