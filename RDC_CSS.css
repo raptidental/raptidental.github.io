@@ -48,14 +48,21 @@ header {
 .flex {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .title {
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #1e40af;
-  line-height: 1.2;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+}
+
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  width: 8.5rem;
 }
 
 nav {
@@ -112,7 +119,13 @@ section.hero {
 .hero-inner {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 2.5rem;
+  text-align: center;
+}
+
+.hero-text {
+  text-align: center;
 }
 
 .hero-logo-box {
@@ -405,10 +418,9 @@ section.contact {
   filter: brightness(1.15);
 }
 
-.social-btn--fb  { background: #1877F2; }
-.social-btn--ig  { background: linear-gradient(45deg, #f09433, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888); }
-.social-btn--wa  { background: #25D366; }
-.social-btn--map { background: #EA4335; }
+.social-btn--fb    { background: #1877F2; }
+.social-btn--wa    { background: #25D366; }
+.social-btn--email { background: #EA4335; }
 
 .map-wrap {
   flex: 1;
@@ -511,7 +523,7 @@ section.contact {
 
 .submit-btn {
   width: 100%;
-  background: #166534;
+  background: #25D366;
   color: white;
   border: none;
   padding: 0.8rem 1rem;
@@ -528,7 +540,7 @@ section.contact {
 }
 
 .submit-btn:hover {
-  background: #14532d;
+  background: #128C7E;
   transform: translateY(-1px);
 }
 
@@ -556,6 +568,16 @@ footer {
   color: white;
   font-size: 0.83rem;
   font-weight: 400;
+}
+
+.footer-credit {
+  color: white;
+  font-weight: 400;
+  transition: color 0.2s;
+}
+
+.footer-credit:hover {
+  color: #facc15;
 }
 
 .back-to-top {
