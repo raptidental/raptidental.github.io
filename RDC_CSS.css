@@ -655,18 +655,82 @@ footer {
   .hero-text h2 { font-size: 2rem; }
 }
 
-/* Tablet portrait */
+/* Tablet portrait & Mobile */
 @media (max-width: 768px) {
-  .hero-inner { flex-direction: column; gap: 1.75rem; }
-  .hero-text h2 { font-size: 1.8rem; }
-  .hero-logo-box { padding: 1rem; }
-  .hero-logo-box img { height: 100px; }
-  .booking-layout { flex-direction: column; }
-  .form-row { flex-direction: column; }
-  .team-grid { flex-direction: column; align-items: center; }
-  .contact-info-panel { min-height: 340px; }
-  .sec-title { font-size: 1.45rem; }
+  html, body {
+    height: 100dvh;
+    overflow: hidden;
+  }
+  
+  .snap-container {
+    height: 100dvh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
+  
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    box-shadow: none;
+    border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+  }
+  
+  section.hero, section.services, section.team, section.contact {
+    height: 100dvh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 85px 0 1rem 0 !important;
+  }
+
+  .hero-inner { flex-direction: column; gap: 1rem; }
+  .hero-text h2 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+  .hero-text p { margin-bottom: 1rem; }
+  .hero-logo-box { padding: 0.75rem; }
+  .hero-logo-box img { height: 80px; }
+  
+  .booking-layout { flex-direction: column; gap: 1rem; }
+  .form-row { flex-direction: column; gap: 0.5rem; margin-bottom: 0.5rem; }
+  
+  .team-grid { 
+    flex-direction: row; 
+    flex-wrap: nowrap; 
+    overflow-x: auto; 
+    scroll-snap-type: x mandatory; 
+    padding-bottom: 1rem;
+    justify-content: flex-start;
+  }
+  .team-card {
+    scroll-snap-align: center;
+    flex-shrink: 0;
+  }
+  
+  .contact-info-panel { min-height: auto; }
+  .map-wrap { display: none; /* Hide map to save space on mobile */ }
+  .booking-form { padding: 1.25rem; }
+  
+  .sec-title { font-size: 1.45rem; margin-bottom: 1rem; }
   .carousel-viewport { max-width: 540px; }
+  
+  footer {
+    background: transparent;
+    padding: 0;
+  }
+  .footer-inner {
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 0.75rem;
+  }
+  .footer-copy, .footer-credit, .back-to-top {
+    color: rgba(255,255,255,0.9);
+  }
 }
 
 /* Stacked header — small phones */
@@ -711,9 +775,7 @@ footer {
   nav a.nav-link { padding: 0.3rem 0; font-size: 0.82rem; }
 
   .hero-text h2 { font-size: 1.55rem; }
-  .hero-logo-box img { height: 85px; }
-  section.hero { padding: 3.5rem 0; }
-  section.services, section.team, section.contact { padding: 3rem 0; }
+  .hero-logo-box img { height: 70px; }
 
   /* Carousel: 1 card centered */
   .carousel-viewport { max-width: 256px; }
